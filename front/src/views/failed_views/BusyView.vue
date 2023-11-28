@@ -1,9 +1,9 @@
 <template>
     <div class="box">
-      <div class="text">
-        Połączenie zakończone.
-      </div>
-      <div class="call-button-bottom"  @click="tryAgain">
+     <div class="text">
+        Konsultatn jest zajęty.
+     </div>
+     <div class="call-button-bottom"  @click= "tryAgain">
         Spróbuj ponownie
       </div>
     </div>

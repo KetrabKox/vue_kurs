@@ -20,10 +20,16 @@ class ViewManager {
       case 'RINGING':
         router.push({name: 'ringing'});
         break;
+      case 'BUSY':
+        router.push({name: 'busy'});
+        break;
+      case 'NO ANSWER':
+        router.push({name: 'noanswer'});
+        break;
 }}
 checkStatus(){
     const socket = 
- io(process.env.VUE_APP_SERVER_URL, {
+ io(`http://localhost:3000/`, {
        reconnection: false,
        transports: ["websocket", 
  "polling"]

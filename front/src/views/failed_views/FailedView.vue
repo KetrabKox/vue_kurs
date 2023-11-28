@@ -1,9 +1,9 @@
 <template>
     <div class="box">
-      <div class="text">
-        Połączenie zakończone.
-      </div>
-      <div class="call-button-bottom"  @click="tryAgain">
+     <div class="text">
+        Nie udało się połączyć.
+     </div>
+     <div class="call-button-bottom"  @click="tryAgain">
         Spróbuj ponownie
       </div>
     </div>
