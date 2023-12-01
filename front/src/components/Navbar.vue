@@ -4,21 +4,24 @@
       ><i class="bi bi-telephone-fill"></i> Home</router-link
     >
     <a class="navbar callHist" @click="callHistModal">
-      <i class="bi bi-gear-fill spin"></i> Historia Połączeń
+      <i class="bi bi-hourglass"></i> Historia Połączeń
     </a>
     <a class="navbar settings" @click="openSettings">
       <i class="bi bi-gear-fill spin"></i> Ustawienia
     </a>
+    <transition name="slide">
+      <SettingsModal
+        v-if="isSettingsOpen"
+        @close="isSettingsOpen = false"
+      ></SettingsModal>
+    </transition>
 
-    <SettingsModal
-      v-if="isSettingsOpen"
-      @close="isSettingsOpen = false"
-    ></SettingsModal>
-
-    <callHistModal
-      v-if="isCallHistOpen"
-      @close="isCallHistOpen = false"
-    ></callHistModal>
+    <transition name="slide">
+      <callHistModal
+        v-if="isCallHistOpen"
+        @close="isCallHistOpen = false"
+      ></callHistModal>
+    </transition>
   </nav>
 </template>
 
@@ -48,3 +51,18 @@ export default {
   },
 };
 </script>
+
+<style>
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateY(-100%);
+}
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateY(0);
+}
+</style>

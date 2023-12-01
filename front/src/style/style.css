@@ -1,24 +1,19 @@
 :root {
-  --backgroud: #fffbf5;
-  --main-color: #2baae1;
-  --main-color-hover: #1b8bbf;
-  --main-color-light: #e1f4ff;
-  --main-color-light-hover: #c5e8ff;
-  --main-color-dark: #1b8bbf;
-  --main-color-dark-hover: #0f5e80;
+  --backgroud: #f6f4eb;
+  --font-color: #cbe3ef;
+  --main-color: #4682a9;
+  --main-color-light: #749bc2;
+  --main-color-dark: #2b6d9e;
+  --main-color-hover: #2b6d9e;
+  --main-color-dark-hover: #2b6d9e;
+  --main-color-light-hover: #749bc2;
   --circle-color: linear-gradient(
-    312deg,
-    #1b8bbf 12.39%,
-    rgba(27, 139, 191, 0.45) 12.39%,
-    rgba(15, 94, 128, 0.87) 87.44%
+    114deg,
+    rgba(70, 130, 169, 0.47) -36.25%,
+    #749bc2 49.07%,
+    #91c8e4 142.75%
   );
-  --main-modal: linear-gradient(
-    298deg,
-    rgba(255, 251, 245, 0.47) -102.88%,
-    #09ae73 -102.88%,
-    #25abcd 82.16%,
-    #2baae1 166.46%
-  );
+  --main-modal: linear-gradient(147deg, #4682a9 15.89%, #91c8e4 113.91%);
 }
 
 body {
@@ -81,7 +76,7 @@ body {
   position: absolute;
   right: 10px;
   top: 10px;
-  color: #fff;
+  color: var(--font-color);
   cursor: pointer;
   font-size: 1.15em;
 }
@@ -114,6 +109,7 @@ body {
   font-weight: 600;
   text-align: center;
   letter-spacing: 3px;
+  color: var(--main-color);
 }
 
 /* Kontener na przycisk i input boxa */
@@ -153,9 +149,11 @@ body {
   line-height: 55px;
   background: var(--main-color);
   cursor: pointer;
-  color: #fff;
+  color: var(--font-color);
   border-radius: 15px;
   margin: 0 auto 0 15px;
+  transform: translateY(0px);
+  transition: 0.5s;
 }
 
 .call-button:hover {
@@ -201,9 +199,27 @@ nav {
 }
 
 .navbar {
+  position: relative;
   color: var(--main-color-dark);
   font-size: 20px;
   text-decoration: none;
+  transform: translateY(0px);
+  transition: transform 0.5s;
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--main-color-dark);
+  transition: width 0.3s ease;
+}
+
+.navbar:hover::after {
+  width: 100%;
 }
 
 .navbar:hover,
@@ -215,6 +231,11 @@ nav {
 }
 
 /* Animacja do ustawień */
+.navbar.settings .bi-gear-fill {
+  transition: rotate 1.25s ease-out;
+  rotate: 0deg;
+  display: inline-block;
+}
 .navbar.settings:hover .bi-gear-fill {
   transition: rotate 1.25s ease-out;
   rotate: 180deg;
@@ -224,6 +245,17 @@ nav {
 .navbar.home:hover .bi-telephone-fill {
   animation: tada 1.25s;
   animation-iteration-count: 1.25s;
+  display: inline-block;
+}
+/* Historia połączeń */
+.navbar.callHist .bi-hourglass {
+  transition: rotate 1.25s ease-out;
+  rotate: 0deg;
+  display: inline-block;
+}
+.navbar.callHist:hover .bi-hourglass {
+  transition: rotate 1.25s ease-out;
+  rotate: 180deg;
   display: inline-block;
 }
 /* Aniamcja do obrazka telefonu */
@@ -261,9 +293,6 @@ nav {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
-  /* Fallback kolor w przypadku braku obsługi przeglądarki */
-  background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Zawartość modala*/
@@ -272,14 +301,51 @@ nav {
   margin: 3% auto;
   padding: 20px;
   border: 1px solid transparent;
-  width: 80%;
+  width: 40%;
   border-radius: 15px;
 }
 
 /* Przycisk zamkniecia modala */
 .close-button {
-  color: #000;
+  color: var(--main-color-dark-hover);
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
+}
+.callHist-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-around;
+  color: white;
+  max-height: 175px;
+  overflow: auto;
+}
+.callHist-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.callHist-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.callHist-list::-webkit-scrollbar-thumb {
+  background: var(--main-color-dark-hover);
+}
+
+.callHist-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.callHist-Wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.modal-header {
+  color: white;
 }

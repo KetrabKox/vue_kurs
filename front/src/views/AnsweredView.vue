@@ -15,6 +15,14 @@ export default {
   },
   mounted() {
     this.callDuration = this.formatTime(localStorage.getItem("callDuration"));
+    this.phoneNum = localStorage.getItem("phoneNumber");
+    this.callHistory = JSON.parse(localStorage.getItem("callHistory")) || [];
+    this.callHistory.push({
+      id: this.callHistory.length + 1,
+      number: this.phoneNum,
+      duration: this.callDuration,
+    });
+    localStorage.setItem("callHistory", JSON.stringify(this.callHistory));
   },
   methods: {
     tryAgain() {
