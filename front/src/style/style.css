@@ -1,0 +1,175 @@
+:root {
+  --backgroud: #fffbf5;
+  --main-color: #2baae1;
+  --main-color-hover: #1b8bbf;
+  --main-color-light: #e1f4ff;
+  --main-color-light-hover: #c5e8ff;
+  --main-color-dark: #1b8bbf;
+  --main-color-dark-hover: #0f5e80;
+}
+body {
+  background: var(--backgroud);
+  position: relative;
+  overflow: hidden;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  min-height: 100vh;
+}
+/* Kontener na wszystkie elementy */
+.window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  margin: auto;
+  background: transparent;
+  text-align: center;
+}
+/* --------------------------------------- */
+/* Okręgi */
+/* Obudowa kół */
+.circle {
+  width: 700px;
+  height: 700px;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+/* Okręg górny */
+.c-top {
+  top: -45vh;
+  right: -45vh;
+  background: linear-gradient(
+    284deg,
+    #0f5e80 -8.12%,
+    rgba(27, 139, 191, 0.45) 9.62%,
+    rgba(27, 139, 191, 0.87) 83.88%
+  );
+  animation: move 5s linear infinite;
+}
+/* Okręg dolny */
+.c-bottom {
+  bottom: -45vh;
+  left: -45vh;
+  background: linear-gradient(
+    312deg,
+    #1b8bbf 12.39%,
+    rgba(27, 139, 191, 0.45) 12.39%,
+    rgba(15, 94, 128, 0.87) 87.44%
+  );
+  animation: move 15s linear infinite;
+}
+/* Animacja obrotu */
+@keyframes move {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* --------------------------------------- */
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.15em;
+}
+.box {
+  text-align: center;
+}
+/* --------------------------------------- */
+/* Kontener na content */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.wrapper-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+#mid {
+  outline: wrap;
+  inline-size: 200px;
+}
+/* Główny tekst */
+.header {
+  font-size: 38px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+/* Kontener na przycisk i input boxa */
+#search-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.text {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+/* Input Box */
+.form-label {
+  font-size: 32px;
+  font-weight: 600;
+}
+.form-number {
+  width: 500px;
+  height: 55px;
+  /* padding: 20px; */
+  box-sizing: border-box;
+  font-size: 28px;
+  letter-spacing: 2px;
+  text-align: center;
+  border-radius: 8px;
+}
+/* Przycisk do dzwonienia */
+.call-button,
+.call-button-bottom {
+  width: 175px;
+  height: 55px;
+  vertical-align: middle;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 55px;
+  background: var(--main-color);
+  cursor: pointer;
+  color: #fff;
+  border-radius: 15px;
+  margin: 0 auto 0 15px;
+}
+
+.call-button:hover {
+  background: var(--main-color-hover);
+  transform: translateY(-5px);
+  transition: 0.5s;
+}
+/* Przycisk do powrotu na stronę */
+.call-button-bottom {
+  margin-top: 300px;
+}
+.error {
+  border: 1px solid #ff0000;
+  background: rgb(255, 170, 170);
+}
+.bi-headset {
+  font-size: 20px;
+  margin-right: 10px;
+}
+/* --------------------------------------- */
