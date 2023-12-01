@@ -1,7 +1,7 @@
 <template>
   <div class="box wbuttons">
     <div class="text">Konsultant jest zajęty.</div>
-    <div class="call-button bottom" @click="tryAgain">Spróbuj ponownie</div>
+    <div class="call-button bottom" @click="tryAgain">Again</div>
   </div>
 </template>
 

@@ -42,7 +42,6 @@ export default {
   methods: {
     // Metoda Call, która jest wywoływana po kliknięciu przycisku "Zadzwoń"
     async call() {
-      this.callStart = Date.now();
       const isValidNumber = this.validateNumber(this.number);
       if (!isValidNumber) {
         alert("Wprowadź poprawny numer");
@@ -60,7 +59,6 @@ export default {
         alert("Wystąpił błąd");
         return;
       }
-      this.endCall();
       this.$router.push({ name: "ringing", params: { callsId: response.id } });
     },
     // Metoda formatNumber, która usuwa wszystkie znaki z numeru telefonu, które nie są cyframi
@@ -87,12 +85,6 @@ export default {
     validateNumber(number) {
       const isValid = number && /^[\d\s+-]+$/.test(number);
       return isValid;
-    },
-    // Metoda endCall, która zapisuje czas trwania połączenia w localStorage
-    endCall() {
-      this.callEnd = Date.now();
-      this.callDuration = Math.round((this.callEnd - this.callStart) / 1000);
-      localStorage.setItem("callDuration", this.callDuration);
     },
     // Metoda startCounter, która uruchamia odliczanie do 26 sekund
     startCounter() {

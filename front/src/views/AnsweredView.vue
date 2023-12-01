@@ -1,8 +1,7 @@
 <template>
   <div class="box wbuttons">
-    <div class="text">
-      Połączenie zakończone. Czas trwania: {{ callDuration }} sekund.
-    </div>
+    <div class="text">Połączenie zakończone.</div>
+    <div class="text">Czas trwania: {{ callDuration }}</div>
     <div class="call-button bottom" @click="tryAgain">Spróbuj</div>
   </div>
 </template>
@@ -15,13 +14,16 @@ export default {
     };
   },
   mounted() {
-    this.callDuration = localStorage.getItem("callDuration");
+    this.callDuration = this.formatTime(localStorage.getItem("callDuration"));
   },
   methods: {
     tryAgain() {
       localStorage.removeItem("phoneNumber");
       localStorage.removeItem("callDuration");
       this.$router.push(`/`);
+    },
+    formatTime(time) {
+      return new Date(time * 1000).toISOString().substr(11, 8);
     },
   },
 };
