@@ -5,22 +5,12 @@
       <span class="slider round"></span>
     </label>
 
-    <router-link class="navbar home" to="/"
+    <router-link class="navbar home" to="/" @click="tryAgain"
       ><i class="bi bi-telephone-fill"></i> Home</router-link
     >
     <a class="navbar callHist" @click="openCallHist">
       <i class="bi bi-hourglass"></i> Historia Połączeń
     </a>
-    <a class="navbar settings" @click="openSettings">
-      <i class="bi bi-gear-fill spin"></i> Ustawienia
-    </a>
-    <transition name="slide">
-      <SettingsModal
-        v-if="isSettingsOpen"
-        @close="isSettingsOpen = false"
-      ></SettingsModal>
-    </transition>
-
     <transition name="slide">
       <callHistModal
         v-if="isCallHistOpen"
@@ -31,32 +21,31 @@
 </template>
 
 <script>
-import SettingsModal from "../views/SettingsView.vue";
 import callHistModal from "../views/CallHistoryView.vue";
 
 export default {
   name: "NavBar",
   components: {
-    SettingsModal,
     callHistModal,
   },
   data() {
     return {
       isCallHistOpen: false,
-      isSettingsOpen: false,
       isDarkTheme: false,
     };
   },
   methods: {
-    openSettings() {
-      this.isSettingsOpen = true;
-    },
     openCallHist() {
-      this.isCallHistOpen = true;
+      this.isCallHistOpen = !this.isCallHistOpen;
     },
     toggleTheme() {
       this.isDarkTheme = !this.isDarkTheme;
       document.body.className = this.isDarkTheme ? "dark-theme" : "";
+    },
+    tryAgain() {
+      localStorage.removeItem("phoneNumber");
+      localStorage.removeItem("callDuration");
+      this.$router.push(`/`);
     },
   },
 };
@@ -69,7 +58,7 @@ export default {
 }
 .slide-enter-from,
 .slide-leave-to {
-  transform: translateY(-100%);
+  transform: translateY(-150%);
 }
 .slide-enter-to,
 .slide-leave-from {

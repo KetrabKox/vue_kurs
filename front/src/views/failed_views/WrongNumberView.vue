@@ -1,5 +1,5 @@
 <template>
   <div class="box wbuttons">
-    <div class="header">Brak odpowiedzi.</div>
+    <div class="header">Wprowadź poprawny numer.</div>
   </div>
 </template>

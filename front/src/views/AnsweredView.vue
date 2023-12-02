@@ -2,7 +2,6 @@
   <div class="box wbuttons">
     <div class="header">Połączenie zakończone.</div>
     <div class="header">Czas trwania: {{ callDuration }}</div>
-    <div class="call-button bottom" @click="tryAgain">Spróbuj</div>
   </div>
 </template>
 
@@ -25,11 +24,6 @@ export default {
     localStorage.setItem("callHistory", JSON.stringify(this.callHistory));
   },
   methods: {
-    tryAgain() {
-      localStorage.removeItem("phoneNumber");
-      localStorage.removeItem("callDuration");
-      this.$router.push(`/`);
-    },
     formatTime(time) {
       return new Date(time * 1000).toISOString().substr(11, 8);
     },

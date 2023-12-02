@@ -27,6 +27,9 @@ class ViewManager {
       case "NO ANSWER":
         router.push({ name: "noanswer" });
         break;
+      case "WRONG NUMBER":
+        router.push({ name: "wrongNumber" });
+        break;
     }
   }
   checkStatus() {

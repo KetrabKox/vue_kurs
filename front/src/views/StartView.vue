@@ -42,24 +42,14 @@ export default {
   methods: {
     // Metoda Call, która jest wywoływana po kliknięciu przycisku "Zadzwoń"
     async call() {
-      const isValidNumber = this.validateNumber(this.number);
-      if (!isValidNumber) {
-        alert("Wprowadź poprawny numer");
-        return;
-      }
-      let responseStream = await fetch(`http://localhost:3000/call`, {
+      // const isValidNumber = this.validateNumber(this.number);
+      await fetch(`http://localhost:3000/call`, {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
         body: JSON.stringify({ number: this.formatNumber(this.number) }),
       });
-      let response = await responseStream.json();
-      if (response?.status === "Failed") {
-        alert("Wystąpił błąd");
-        return;
-      }
-      this.$router.push({ name: "ringing", params: { callsId: response.id } });
     },
     // Metoda formatNumber, która usuwa wszystkie znaki z numeru telefonu, które nie są cyframi
     formatNumber(number) {

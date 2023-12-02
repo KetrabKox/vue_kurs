@@ -7,7 +7,7 @@ import Failed from "../views/failed_views/FailedView.vue";
 import Busy from "../views/failed_views/BusyView.vue";
 import NoAnswer from "../views/failed_views/NoAnswerView.vue";
 import CallHistory from "../views/CallHistoryView.vue";
-import Settings from "../views/SettingsView.vue";
+import WrongNumber from "../views/failed_views/WrongNumberView.vue";
 
 const routes = [
   {
@@ -52,9 +52,9 @@ const routes = [
     component: CallHistory,
   },
   {
-    path: "/settings",
-    name: "settings",
-    component: Settings,
+    path: "/wrongNumber",
+    name: "wrongNumber",
+    component: WrongNumber,
   },
 ];
 const router = createRouter({
