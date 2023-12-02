@@ -1,7 +1,7 @@
 <template>
   <div class="box">
-    <div class="text">Trwa połączenie...</div>
-    <div class="text">{{ callDuration }}</div>
+    <div class="header">Trwa połączenie...</div>
+    <div class="header">{{ callDuration }}</div>
   </div>
 </template>
 

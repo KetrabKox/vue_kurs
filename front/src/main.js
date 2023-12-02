@@ -4,4 +4,6 @@ import router from "./router";
 import ViewManager from "./services/ViewManager";
 
 ViewManager.checkStatus();
-createApp(App).use(router).use(router).mount("#app");
+
+const app = createApp(App);
+app.use(router).use(router).mount("#app");

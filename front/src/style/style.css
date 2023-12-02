@@ -2,11 +2,10 @@
   --backgroud: #f6f4eb;
   --font-color: #cbe3ef;
   --main-color: #4682a9;
-  --main-color-light: #749bc2;
+  --header-color: #4682a9;
+  --slider-color: #749bc2;
   --main-color-dark: #2b6d9e;
-  --main-color-hover: #2b6d9e;
-  --main-color-dark-hover: #2b6d9e;
-  --main-color-light-hover: #749bc2;
+  --button-hover: #2b6d9e;
   --circle-color: linear-gradient(
     114deg,
     rgba(70, 130, 169, 0.47) -36.25%,
@@ -14,6 +13,22 @@
     #91c8e4 142.75%
   );
   --main-modal: linear-gradient(147deg, #4682a9 15.89%, #91c8e4 113.91%);
+  --light: #d8dbe0;
+  --dark: #28292c;
+}
+/*------------------------------------------ Zmiana koloru na ciemny ------------------------------------------*/
+.dark-theme {
+  --backgroud: #161a30;
+  --font-color: #b6bbc4;
+  --main-color: #43425f;
+  --header-color: #b6bbc4;
+  --slider-color: #4d4d4d;
+  --main-color-dark: #b6bbc4;
+  --button-hover: #33324f;
+  --circle-color: linear-gradient(157deg, #31304d 19.59%, #b6bbc4 130.72%);
+  --main-modal: linear-gradient(157deg, #31304d 19.59%, #b6bbc4 130.72%);
+  --light: #d8dbe0;
+  --dark: #28292c;
 }
 
 body {
@@ -23,6 +38,7 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   min-height: 100vh;
+  transition: 0.5s;
 }
 /* Kontener na wszystkie elementy */
 .window {
@@ -40,8 +56,8 @@ body {
 /* Okręgi */
 /* Obudowa kół */
 .circle {
-  width: 700px;
-  height: 700px;
+  width: 85vh;
+  height: 85vh;
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -51,20 +67,12 @@ body {
   top: -45vh;
   right: -45vh;
   background: var(--circle-color);
-  animation: move 5s linear infinite;
 }
 /* Okręg dolny */
 .c-bottom {
   bottom: -45vh;
   left: -45vh;
   background: var(--circle-color);
-  animation: move 15s linear infinite;
-}
-/* Animacja obrotu */
-@keyframes move {
-  100% {
-    transform: rotate(360deg);
-  }
 }
 /* --------------------------------------- */
 .clearfix:after {
@@ -109,7 +117,7 @@ body {
   font-weight: 600;
   text-align: center;
   letter-spacing: 3px;
-  color: var(--main-color);
+  color: var(--header-color);
 }
 
 /* Kontener na przycisk i input boxa */
@@ -157,7 +165,7 @@ body {
 }
 
 .call-button:hover {
-  background: var(--main-color-hover);
+  background: var(--button-hover);
   transform: translateY(-5px);
   transition: 0.5s;
 }
@@ -225,7 +233,7 @@ nav {
 .navbar:hover,
 .navbar:active {
   cursor: pointer;
-  color: var(--main-color-dark-hover);
+  color: var(--main-color-dark);
   transform: translateY(2.5px);
   transition: transform 0.5s;
 }
@@ -282,8 +290,8 @@ nav {
     transform: scale(1) rotate(0);
   }
 }
-/* ---------------------------------- */
-/* Modale */
+/* --------------------------------------------------------------------Modale--------------------------------------------------------------------*/
+/*  */
 
 .modal {
   position: fixed;
@@ -300,14 +308,13 @@ nav {
   background: var(--main-modal);
   margin: 3% auto;
   padding: 20px;
-  border: 1px solid transparent;
   width: 40%;
   border-radius: 15px;
 }
 
 /* Przycisk zamkniecia modala */
 .close-button {
-  color: var(--main-color-dark-hover);
+  color: var(--main-color-dark);
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -333,7 +340,7 @@ nav {
 }
 
 .callHist-list::-webkit-scrollbar-thumb {
-  background: var(--main-color-dark-hover);
+  background: var(--main-color-dark);
 }
 
 .callHist-list::-webkit-scrollbar-thumb:hover {
@@ -350,96 +357,63 @@ nav {
   color: white;
 }
 
-/* Zmiana kolorów */
+/* --------------------------------------------------------------------Zmiana kolorów --------------------------------------------------------------------  */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
-/* Pasek i okręgi */
-.knobs,
-.layer {
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.slider {
   position: absolute;
+  cursor: pointer;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  background-color: var(--slider-color);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-.knobs {
-  z-index: 2;
-}
-
-.layer {
-  width: 100%;
-  background-color: #ffd28f;
-  transition: 0.3s ease all;
-  z-index: 1;
-}
-
-/* Obudowy przycisków */
-.checkbox {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 3;
-}
-.button-r {
-  position: relative;
-  width: 74px;
-  height: 36px;
-  overflow: hidden;
-}
-
-.button-r,
-.button-r .layer {
-  border-radius: 100px;
-}
-
-.button.b2 {
-  border-radius: 2px;
-}
-/* Logika przycisków */
-#themeButton .knobs:before,
-#themeButton .knobs:after {
-  content: url("../assets/brightness-high-fill.svg");
+.slider:before {
   position: absolute;
-  top: 4px;
+  content: "";
+  height: 26px;
+  width: 26px;
   left: 4px;
-  width: 30px;
-  height: 30px;
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-  line-height: 1;
-  padding: 8px 4px;
-  background-color: #f5e8c7;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--main-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
   border-radius: 50%;
-  transition: 0.3s ease all;
-}
-
-#themeButton .knobs:before {
-  content: url("../assets/brightness-high-fill.svg");
-}
-
-#themeButton .knobs:after {
-  content: url("../assets/moon-fill.svg");
-}
-
-#themeButton .knobs:after {
-  right: -30px;
-  left: auto;
-  background-color: #818fb4;
-}
-
-#themeButton .checkbox:checked + .knobs:before {
-  left: -30px;
-}
-
-#themeButton .checkbox:checked + .knobs:after {
-  right: 4px;
-}
-
-#themeButton .checkbox:checked ~ .layer {
-  background-color: #435585;
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="box wbuttons">
-    <div class="text">Połączenie zakończone.</div>
-    <div class="text">Czas trwania: {{ callDuration }}</div>
+    <div class="header">Połączenie zakończone.</div>
+    <div class="header">Czas trwania: {{ callDuration }}</div>
     <div class="call-button bottom" @click="tryAgain">Spróbuj</div>
   </div>
 </template>

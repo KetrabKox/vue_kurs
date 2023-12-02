@@ -1,14 +1,14 @@
 <template>
   <nav>
-    <div class="button-r" id="themeButton">
-      <input type="checkbox" class="checkbox" />
-      <div class="knobs"></div>
-      <div class="layer"></div>
-    </div>
+    <label class="switch">
+      <input type="checkbox" @change="toggleTheme" />
+      <span class="slider round"></span>
+    </label>
+
     <router-link class="navbar home" to="/"
       ><i class="bi bi-telephone-fill"></i> Home</router-link
     >
-    <a class="navbar callHist" @click="callHistModal">
+    <a class="navbar callHist" @click="openCallHist">
       <i class="bi bi-hourglass"></i> Historia Połączeń
     </a>
     <a class="navbar settings" @click="openSettings">
@@ -44,17 +44,19 @@ export default {
     return {
       isCallHistOpen: false,
       isSettingsOpen: false,
+      isDarkTheme: false,
     };
   },
   methods: {
     openSettings() {
       this.isSettingsOpen = true;
     },
-    callHistModal() {
+    openCallHist() {
       this.isCallHistOpen = true;
     },
     toggleTheme() {
-      document.body.classList.toggle("dark");
+      this.isDarkTheme = !this.isDarkTheme;
+      document.body.className = this.isDarkTheme ? "dark-theme" : "";
     },
   },
 };
