@@ -1,5 +1,10 @@
 <template>
   <nav>
+    <div class="button-r" id="themeButton">
+      <input type="checkbox" class="checkbox" />
+      <div class="knobs"></div>
+      <div class="layer"></div>
+    </div>
     <router-link class="navbar home" to="/"
       ><i class="bi bi-telephone-fill"></i> Home</router-link
     >
@@ -47,6 +52,9 @@ export default {
     },
     callHistModal() {
       this.isCallHistOpen = true;
+    },
+    toggleTheme() {
+      document.body.classList.toggle("dark");
     },
   },
 };

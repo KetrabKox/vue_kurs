@@ -193,7 +193,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  width: 50%;
+  width: 60%;
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -201,7 +201,7 @@ nav {
 .navbar {
   position: relative;
   color: var(--main-color-dark);
-  font-size: 20px;
+  font-size: 30px;
   text-decoration: none;
   transform: translateY(0px);
   transition: transform 0.5s;
@@ -348,4 +348,98 @@ nav {
 }
 .modal-header {
   color: white;
+}
+
+/* Zmiana kolorów */
+
+/* Pasek i okręgi */
+.knobs,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.knobs {
+  z-index: 2;
+}
+
+.layer {
+  width: 100%;
+  background-color: #ffd28f;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+/* Obudowy przycisków */
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+.button-r {
+  position: relative;
+  width: 74px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.button-r,
+.button-r .layer {
+  border-radius: 100px;
+}
+
+.button.b2 {
+  border-radius: 2px;
+}
+/* Logika przycisków */
+#themeButton .knobs:before,
+#themeButton .knobs:after {
+  content: url("../assets/brightness-high-fill.svg");
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 8px 4px;
+  background-color: #f5e8c7;
+  border-radius: 50%;
+  transition: 0.3s ease all;
+}
+
+#themeButton .knobs:before {
+  content: url("../assets/brightness-high-fill.svg");
+}
+
+#themeButton .knobs:after {
+  content: url("../assets/moon-fill.svg");
+}
+
+#themeButton .knobs:after {
+  right: -30px;
+  left: auto;
+  background-color: #818fb4;
+}
+
+#themeButton .checkbox:checked + .knobs:before {
+  left: -30px;
+}
+
+#themeButton .checkbox:checked + .knobs:after {
+  right: 4px;
+}
+
+#themeButton .checkbox:checked ~ .layer {
+  background-color: #435585;
 }
