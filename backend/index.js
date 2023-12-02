@@ -60,7 +60,8 @@ httpServer.post("/call/", async (req, res) => {
     }, 1000);
     res.json({ id: "123", status: bridge.STATUSES.NEW });
   } catch (e) {
-    res.json({ status: "Failed" });
+    io.emit("status", "WRONG NUMBER");
+    res.json({ status: "WRONG NUMBER" });
   }
 });
 
