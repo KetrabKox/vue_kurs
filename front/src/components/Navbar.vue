@@ -46,9 +46,14 @@ export default {
       document.body.className = this.isDarkTheme ? "dark-theme" : "";
     },
     tryAgain() {
-      localStorage.removeItem("phoneNumber");
-      localStorage.removeItem("callDuration");
-      this.$router.push(`/`);
+      const isCalling = parseInt(localStorage.getItem("isCalling"));
+      if (isCalling) {
+        return;
+      } else {
+        localStorage.removeItem("phoneNumber");
+        localStorage.removeItem("callDuration");
+        this.$router.push(`/`);
+      }
     },
   },
 };

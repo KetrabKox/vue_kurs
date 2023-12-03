@@ -42,6 +42,12 @@ class ViewManager {
         this.status = status;
         this.changeView();
       }
+      if (status === "RINGING") {
+        localStorage.setItem("isCalling", 1);
+      }
+      if (status === "NO ANSWER" || status === "FAILED" || status === "BUSY") {
+        localStorage.setItem("isCalling", 0);
+      }
       if (status === "CONNECTED") {
         this.callStart = Date.now();
       }
@@ -55,6 +61,7 @@ class ViewManager {
     this.callEnd = Date.now();
     this.callDuration = Math.round((this.callEnd - this.callStart) / 1000);
     localStorage.setItem("callDuration", this.callDuration);
+    localStorage.setItem("isCalling", 0);
   }
 }
 

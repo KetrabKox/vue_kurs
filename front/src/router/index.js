@@ -64,13 +64,13 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const phoneNumber = localStorage.getItem("phoneNumber");
+  const isCalling = parseInt(localStorage.getItem("isCalling"));
 
-  if (
-    to.name !== "start" &&
-    to.name !== "settings" &&
-    to.name !== "callHistory" &&
-    !phoneNumber
-  ) {
+  if (isCalling && to.name !== "ringing" && to.name !== "connected") {
+    next(false);
+  }
+
+  if (to.name !== "start" && to.name !== "callHistory" && !phoneNumber) {
     next({ name: "start" });
   } else {
     next();
