@@ -1,8 +1,11 @@
 <template>
   <nav>
-    <label class="switch">
-      <input type="checkbox" @change="toggleTheme" />
-      <span class="slider round"></span>
+    <label class="toggle-wrap">
+      <input type="checkbox" class="toggle-switch" @change="toggleTheme" />
+      <span class="toggle">
+        <i class="bi bi-sun"></i>
+        <i class="bi bi-moon"></i>
+      </span>
     </label>
 
     <router-link class="navbar home" to="/" @click="tryAgain"
