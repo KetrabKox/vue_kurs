@@ -13,8 +13,8 @@
     #91c8e4 142.75%
   );
   --main-modal: linear-gradient(147deg, #4682a9 15.89%, #91c8e4 113.91%);
-  --light: #d8dbe0;
-  --dark: #28292c;
+  --light: rgba(0, 0, 0, 0.4);
+  --dark: rgba(255, 255, 255, 0.4);
 }
 /*------------------------------------------------------------------------------Zmiana koloru na ciemny ------------------------------------------------------------------------------ */
 .dark-theme {
@@ -27,6 +27,8 @@
   --button-hover: #33324f;
   --circle-color: linear-gradient(157deg, #31304d 19.59%, #b6bbc4 130.72%);
   --main-modal: linear-gradient(157deg, #31304d 19.59%, #b6bbc4 130.72%);
+  --light: #161a30;
+  --dark: #43425f;
 }
 
 body {
@@ -373,8 +375,7 @@ nav {
   height: 34px;
   border-radius: 100px;
   background: #ebebeb;
-  box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.4),
-    inset 0 -5px 10px rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 5px 10px var(--light), inset 0 -5px 10px var(--dark);
   transition: 0.3s ease-in-out;
 }
 
@@ -426,7 +427,7 @@ nav {
 }
 .toggle-switch:checked ~ .toggle:after {
   transform: translateX(50px);
-  background: linear-gradient(180deg, #777, #3a3a3a);
+  background: var(--main-modal);
 }
 
 .toggle-switch:checked ~ .toggle i:first-child {
