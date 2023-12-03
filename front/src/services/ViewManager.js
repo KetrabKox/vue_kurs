@@ -48,6 +48,11 @@ class ViewManager {
       if (status === "NO ANSWER" || status === "FAILED" || status === "BUSY") {
         localStorage.setItem("isCalling", 0);
       }
+      if (status === "WRONG NUMBER") {
+        localStorage.setItem("isCalling", 0);
+        localStorage.setItem("callDuration", 0);
+        router.push({ name: "wrongNumber" });
+      }
       if (status === "CONNECTED") {
         this.callStart = Date.now();
       }

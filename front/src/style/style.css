@@ -512,6 +512,18 @@ nav {
   .navbar {
     font-size: 25px;
   }
+  .navbar.home {
+    font-size: 0px;
+  }
+  .navbar.home .bi-telephone-fill {
+    font-size: 35px;
+  }
+  .navbar.callHist {
+    font-size: 0px;
+  }
+  .navbar.callHist .bi-hourglass {
+    font-size: 35px;
+  }
   .form-label {
     font-size: 15px;
   }
@@ -534,7 +546,7 @@ nav {
     font-size: 15px;
   }
   .modal {
-    margin: 12% auto;
+    margin: 14% auto;
   }
 }
 @media (max-width: 470px) {
@@ -543,28 +555,6 @@ nav {
   }
   .navbar {
     font-size: 20px;
-  }
-  .toggle {
-    width: 60px;
-    height: 24px;
-  }
-
-  .toggle:after {
-    width: 20px;
-    height: 20px;
-  }
-  .toggle i:last-child {
-    font-size: 15px;
-    bottom: 4px;
-    right: 4px;
-  }
-  .toggle i:first-child {
-    font-size: 15px;
-    top: 4px;
-    left: 4px;
-  }
-  .toggle-switch:checked ~ .toggle:after {
-    transform: translateX(35px);
   }
   .form-label {
     font-size: 12px;
@@ -583,5 +573,8 @@ nav {
   }
   .form-number::placeholder {
     font-size: 10px;
+  }
+  .modal {
+    margin: 18% auto;
   }
 }
