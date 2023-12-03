@@ -20,12 +20,6 @@ const serverInstance = httpServer.listen(3000, () => {
 });
 
 const io = new Server(serverInstance);
-// httpServer.get('/call/:number1/:number2', (req, res) => {
-//     const number1 = req.params.number1;
-//     const number2 = process.env.MY_NUMBER;
-//     dialer.call(number1, number2);
-//     res.json({success: true});
-// })
 
 httpServer.use(bodyParser.json());
 httpServer.use(cors());
@@ -33,6 +27,9 @@ httpServer.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept");
   next();
+});
+httpServer.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 httpServer.post("/call/", async (req, res) => {

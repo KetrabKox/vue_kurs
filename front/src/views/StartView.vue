@@ -42,8 +42,7 @@ export default {
   methods: {
     // Metoda Call, która jest wywoływana po kliknięciu przycisku "Zadzwoń"
     async call() {
-      // const isValidNumber = this.validateNumber(this.number);
-      await fetch(`http://localhost:3000/call`, {
+      await fetch(`${process.env.VUE_APP_URL}/call`, {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",

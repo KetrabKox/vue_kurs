@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  backend:
+    tty: true
+    stdin_open: true
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./backend/.env
+
+  front:
+    tty: true
+    stdin_open: true
+    build:
+      context: ./front
+      dockerfile: Dockerfile.dev
+    ports:
+      - "2137:2137"
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    env_file:
+      - ./front/.env
